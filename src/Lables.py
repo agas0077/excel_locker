@@ -6,11 +6,13 @@ class Lables(L):
         self.done = []
         self.lables = []
     
-    def addMessageToList(self, message):
-        return self.done.append(message)
+    def addMessageToList(self, message, maxNum):
+        self.done.append(message)
+        if len(self.done) > maxNum:
+            self.done.pop(0)
 
-    def createLables(self):
-        self.lables = [L(text=message) for message in self.done]
+    def createLables(self, background=None):
+        self.lables = [L(text=message, wraplength=500, background=background) for message in self.done]
         for lable in self.lables:
             lable.pack()
             
@@ -21,3 +23,5 @@ class Lables(L):
 
     def clearMessages(self):
         self.done = []
+    
+    
