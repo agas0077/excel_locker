@@ -39,10 +39,6 @@ NOTE: I'm a novice to python dev, so don't blame me for mistakes or some bad pra
 
 ## Meta
 
-agas0077 – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
-
-Distributed under the XYZ license. See ``LICENSE`` for more information.
-
 [https://github.com/agas0077](https://github.com/agas0077)
 
 ## Contributing
