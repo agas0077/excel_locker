@@ -1,5 +1,6 @@
 import os
 import subprocess
+from pathlib import Path
 
 class PasswordSetter:
 
@@ -9,8 +10,6 @@ class PasswordSetter:
     def setPassword(self, excel_file_path, password):
         """Locks excel file with password. Modification allowed only when password is entered"""
         
-        from pathlib import Path
-
         # excel_file_path = Path(os.path.abspath(excel_file_path))
         excel_file_path = Path(excel_file_path)
 
@@ -38,7 +37,5 @@ class PasswordSetter:
 
         # remove
         vbs_script_path.unlink()
-
+ 
         return None
-
-

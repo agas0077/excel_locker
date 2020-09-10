@@ -29,9 +29,27 @@ If you find this app usefull for your business, feel free to take, use and work 
 
 NOTE: I'm a novice to python dev, so don't blame me for mistakes or some bad practices. I would really appriciate any reasonable comments =)
 
+## TODO
+Here are my thoughts of what would be nice to add or fix:
+
+* Set up an error handler that can catch and display errors that occure in VBA. For now the app show the success message, even if the password is not set, for example, due to too long filename or if an already locked file wasn't unlocked by user while executing the task.
+
+*  Design for sure.
+
+* Add function and choice that would completely lock file (for this - change one string in VBA):
+
+    ASIS workbook.SaveAs "{excel_file_path}",,, "{password}"
+    TOBE workbook.SaveAs "{excel_file_path}",, "{password}" 
+
 ## Release History
 
-
+* 1.1.0
+    * When restarting the process whithout reopening file, old lables are deleted. 
+* 1.0.0
+    * The first wellworking version
+    * CHANGE: 
+        * add a few "design" corrections
+        * fixed some code issues
 * 0.1.0
     * The first proper release
 * 0.0.1
