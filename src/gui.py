@@ -20,6 +20,7 @@ ps = PasswordSetter()
 # Создаем экземпляр лейбла
 lb = Lables()
 
+
 # Функция, определяющая адреса файлов, пароль и запускающая процесс блокировки файлов
 def runLocking():
     tup = dialog.getPaths()
@@ -57,8 +58,6 @@ def runLocking():
     lb.addMessageToList("ВСЕ ФАЙЛЫ БЫЛИ ОБРАБОТАНЫ, НАДЕЮСЬ УСПЕШНО...", 6)
     lb.createLables(background='#2e8b57')
         
-
-
 
 # Инициализация кнопки выбора файлов
 chooseFileBtn = Button(window, text="Выбрать файлы", command=dialog.callDialog, width=25, height=1)
