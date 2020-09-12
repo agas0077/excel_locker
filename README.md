@@ -1,7 +1,7 @@
 # Excel Locker
 > This is a little app that sets passwords to your excel files.
 
-It takes a banch of your excel files and applies a macro script to each of them. 
+It takes a bunch of your excel files and applies a macro script to each of them. 
 The macro opens each file sets password and resaves the file.
 
 That is what you get as a result.
