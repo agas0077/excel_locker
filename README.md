@@ -43,6 +43,8 @@ Here are my thoughts of what would be nice to add or fix:
 
 ## Release History
 
+* 1.1.1
+    * Fixed PEP-8 warnings
 * 1.1.0
     * When restarting the process whithout reopening file, old lables are deleted. 
 * 1.0.0
