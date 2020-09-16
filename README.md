@@ -45,13 +45,13 @@ Here are my thoughts of what would be nice to add or fix:
 
 * 1.1.1
     * Fixed PEP-8 warnings
+    * No more console popups while executing cscript.exe
 * 1.1.0
     * When restarting the process whithout reopening file, old lables are deleted. 
 * 1.0.0
     * The first wellworking version
-    * CHANGE: 
-        * add a few "design" corrections
-        * fixed some code issues
+    * Add a few "design" corrections
+    * Fixed some code issues
 * 0.1.0
     * The first proper release
 * 0.0.1
