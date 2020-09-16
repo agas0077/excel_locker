@@ -34,7 +34,7 @@ class PasswordSetter:
             file.write(vbs_script)
 
         # execute
-        subprocess.call(['cscript.exe', str(vbs_script_path)])
+        subprocess.call(['cscript.exe', str(vbs_script_path)], creationflags=subprocess.CREATE_NO_WINDOW)
 
         # remove
         vbs_script_path.unlink()
