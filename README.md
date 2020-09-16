@@ -44,6 +44,8 @@ Here are my thoughts of what would be nice to add or fix:
 
 ## Release History
 
+* 1.1.2
+    * Add error handler. Now, if there was an error in executin excel macro or somthing went wrong with excel, the program will print an error.
 * 1.1.1
     * Fixed PEP-8 warnings
     * No more console popups while executing cscript.exe

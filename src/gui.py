@@ -40,11 +40,17 @@ def runLocking():
         return messagebox.showerror("Ошибка", "Пароль должен состоять из максимум 15 символов")
 
     i = 0
+    errors = 0
     for path in tup:
-        ps.setPassword(path, password)
+        res = ps.setPassword(path, password)
 
+        if res["err"]:
+            message = f"Ошибка: {res['err']}"
+            errors += 1
+        else:
+            message = f"Пароль установлен для {dialog.fileNames[i]}"
         # Добавляем сообщение об успешном выполнении
-        lb.addMessageToList(f"Пароль должен был быть установлен для {dialog.fileNames[i]}", 6)
+        lb.addMessageToList(f"{message}", 6)
         lb.destroyLables()
         lb.createLables(background='#2e8b57')
 
@@ -55,7 +61,7 @@ def runLocking():
 
     # Удаляем сообщения об успешном выполнении и выводим сообщение об успешном завершении процесса
     lb.destroyLables()
-    lb.addMessageToList("ВСЕ ФАЙЛЫ БЫЛИ ОБРАБОТАНЫ, НАДЕЮСЬ УСПЕШНО...", 6)
+    lb.addMessageToList(f"ВСЕ ФАЙЛЫ БЫЛИ ОБРАБОТАНЫ! Ошибок: {errors}", 6)
     lb.createLables(background='#2e8b57')
         
 

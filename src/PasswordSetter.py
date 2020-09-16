@@ -1,6 +1,7 @@
 import os
 import subprocess
 from pathlib import Path
+import re
 
 
 class PasswordSetter:
@@ -34,9 +35,20 @@ class PasswordSetter:
             file.write(vbs_script)
 
         # execute
-        subprocess.call(['cscript.exe', str(vbs_script_path)], creationflags=subprocess.CREATE_NO_WINDOW)
+        result = subprocess.run(['cscript.exe', str(vbs_script_path)], creationflags=subprocess.CREATE_NO_WINDOW, capture_output=True)
+        res = {
+            "result": result.stdout.decode(encoding='cp866'),
+            "err": self._errMessage(result.stderr.decode(encoding='cp866'))
+        }
 
         # remove
         vbs_script_path.unlink()
 
+        return res
+
+    def _errMessage(self, err):
+        patern = r'Microsoft Excel\:.*'
+        error = re.search(patern, err)
+        if err:
+            return error.group()
         return None
