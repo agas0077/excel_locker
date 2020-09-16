@@ -11,11 +11,12 @@ That is what you get as a result.
 
 OS X & Linux:
 
-To run the app on these OS just run gui.py via console.
+DOESN'T WORK ON LINUX, DUE TO CSCRIPT.EXE
+SUPPOSE, THE SAME THING WITH OS X
 
 Windows:
 
-To open the app on Windows either run gui.py via console or execute gui.exe
+To open the app on Windows either run gui.py via console or execute Exele Loker X.X.X.exe
 
 ## Usage example
 
