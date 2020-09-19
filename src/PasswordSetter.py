@@ -35,10 +35,12 @@ class PasswordSetter:
             file.write(vbs_script)
 
         # execute
-        result = subprocess.run(['cscript.exe', str(vbs_script_path)], creationflags=subprocess.CREATE_NO_WINDOW, capture_output=True)
+        result = subprocess.Popen(['cscript.exe', str(vbs_script_path)], creationflags=subprocess.CREATE_NO_WINDOW, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # result.wait()
+        output, err = result.communicate()
         res = {
-            "result": result.stdout.decode(encoding='cp866'),
-            "err": self._errMessage(result.stderr.decode(encoding='cp866'))
+            "result": output.decode(encoding='cp866'),
+            "err": self._errMessage(err.decode(encoding='cp866'))
         }
 
         # remove

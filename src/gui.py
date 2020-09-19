@@ -1,4 +1,5 @@
 from tkinter import *
+from pathlib import Path
 from Dialog import *
 from PasswordSetter import *
 from EntryField import *
@@ -6,7 +7,7 @@ from Lables import *
 
 # Создаем окно с необходимыми параметрами
 window = Tk()
-window.title('Установка паролей на редактирование файлов Excel v0.1.0')
+window.title('Установка паролей на редактирование файлов Excel')
 window.geometry("500x300")
 window.resizable(width=False, height=False)
 window.configure(background='#2e8b57')
@@ -42,8 +43,15 @@ def runLocking():
     i = 0
     errors = 0
     for path in tup:
-        res = ps.setPassword(path, password)
+        
 
+        lb.addMessageToList(f"{Path(path)}", 6)
+        lb.destroyLables()
+        lb.createLables(background='#2e8b57')
+
+        # Обновляем окно
+        window.update()
+        res = ps.setPassword(path, password)
         if res["err"]:
             message = f"Ошибка: {res['err']}"
             errors += 1
