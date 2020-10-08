@@ -9,11 +9,14 @@ class PasswordSetter:
     def __init__(self):
         pass
 
-    def setPassword(self, excel_file_path, password):
+    def setPassword(self, excel_file_path, name, password):
         """Locks excel file with password. Modification allowed only when password is entered"""
 
-        # excel_file_path = Path(os.path.abspath(excel_file_path))
-        excel_file_path = Path(excel_file_path)
+        folder_path = Path(os.path.normpath(os.path.dirname(excel_file_path)))
+        name_to_save = 'a' + name
+        excel_file_path = Path(os.path.normpath(os.path.join(folder_path, name)))
+        excel_file_path_to_save = Path(os.path.normpath(os.path.join(folder_path, name_to_save)))
+
 
         vbs_script = \
         f"""' Save with password required upon opening
@@ -24,7 +27,9 @@ class PasswordSetter:
         excel_object.DisplayAlerts = False
         excel_object.Visible = False
 
-        workbook.SaveAs "{excel_file_path}",,, "{password}"
+        workbook.SaveAs "{excel_file_path_to_save}",,, "{password}"
+
+        workbook.Close
 
         excel_object.Application.Quit
         """
@@ -36,13 +41,15 @@ class PasswordSetter:
 
         # execute
         result = subprocess.Popen(['cscript.exe', str(vbs_script_path)], creationflags=subprocess.CREATE_NO_WINDOW, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # result.wait()
         output, err = result.communicate()
         res = {
             "result": output.decode(encoding='cp866'),
             "err": self._errMessage(err.decode(encoding='cp866'))
         }
 
+        # Remove the old file and rename the new one
+        self._rename(excel_file_path_to_save, excel_file_path)
+        
         # remove
         vbs_script_path.unlink()
 
@@ -54,3 +61,7 @@ class PasswordSetter:
         if err:
             return error.group()
         return None
+
+    def _rename(self, initial_path, renamed_path):
+        os.unlink(renamed_path)
+        os.rename(initial_path, renamed_path)

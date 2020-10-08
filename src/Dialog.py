@@ -17,7 +17,8 @@ class Dialog:
         """Returns tuple of paths stored at class instance"""
         return self.pathTuple
 
-    
+    def getNames(self):
+        return self.fileNames
 
 
     

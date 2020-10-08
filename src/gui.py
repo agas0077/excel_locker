@@ -23,9 +23,10 @@ lb = Lables()
 
 
 # Функция, определяющая адреса файлов, пароль и запускающая процесс блокировки файлов
-def runLocking():
+def runLocking(mypassword=None, button=None):
     tup = dialog.getPaths()
-    password = passField.getFieldValue()
+    names = dialog.getNames()
+    password = mypassword or passField.getFieldValue()
 
     # Удаляем сообщения если есть
     lb.clearMessages()
@@ -35,15 +36,17 @@ def runLocking():
     if len(tup) == 0:
         return messagebox.showerror("Ошибка", "Необходимо выбрать файлы")
     # Проверяем введен ли пароль
-    if len(password) == 0 or password == passField.placeholder:
-        return messagebox.showerror("Ошибка", "Необходимо ввести пароль")
-    if len(password) > 15:
-        return messagebox.showerror("Ошибка", "Пароль должен состоять из максимум 15 символов")
+    if button: 
+        if len(password) == 0 or password == passField.placeholder:
+            return messagebox.showerror("Ошибка", "Необходимо ввести пароль")
+        if len(password) > 15:
+            return messagebox.showerror("Ошибка", "Пароль должен состоять из максимум 15 символов")
 
     i = 0
     errors = 0
-    for path in tup:
+    for index, path in enumerate(tup):
         
+        name = names[index]
 
         lb.addMessageToList(f"{Path(path)}", 6)
         lb.destroyLables()
@@ -51,7 +54,7 @@ def runLocking():
 
         # Обновляем окно
         window.update()
-        res = ps.setPassword(path, password)
+        res = ps.setPassword(path, name, password)
         if res["err"]:
             message = f"Ошибка: {res['err']}"
             errors += 1
@@ -84,5 +87,9 @@ passField.pack(side=TOP, padx=5, pady=5)
 # Инициализация кнопки запуска
 showFileBtn = Button(window, text="Запустить обработку файлов", command=runLocking, width=25, height=1)
 showFileBtn.pack(padx=5, pady=5)
+
+# Инициализация кнопки запуска со стандартным паролем
+presetBtn = Button(window, text="iWantToModify", command=lambda: runLocking('iWantToModify', 'preset'), width=25, height=1)
+presetBtn.pack(padx=5, pady=5)
 
 window.mainloop()

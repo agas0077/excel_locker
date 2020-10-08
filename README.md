@@ -33,8 +33,6 @@ NOTE: I'm a novice to python dev, so don't blame me for mistakes or some bad pra
 ## TODO
 Here are my thoughts of what would be nice to add or fix:
 
-* Set up an error handler that can catch and display errors that occure in VBA. For now the app show the success message, even if the password is not set, for example, due to too long filename or if an already locked file wasn't unlocked by user while executing the task.
-
 *  Design for sure.
 
 * Add function and choice that would completely lock file (for this - change one string in VBA):
@@ -44,6 +42,10 @@ Here are my thoughts of what would be nice to add or fix:
 
 ## Release History
 
+
+* 2.0.0
+    * Now it creates a copy of an initial file, locks it, saves it with a new name, then removes the initial file and renames the new file to the initial name. 
+    * Add a button for lazy people like me and for unimportant stuff. It starts the program with preset password - iWantToModify
 * 1.1.2
     * Add error handler. Now, if there was an error in executin excel macro or somthing went wrong with excel, the program will print an error.
 * 1.1.1
@@ -59,6 +61,10 @@ Here are my thoughts of what would be nice to add or fix:
     * The first proper release
 * 0.0.1
     * Work in progress
+
+## Issues
+
+* FIXED in 2.0.0 - The program doesn't work on some machines, beacuse it can't get access to the locked file that is somehow being used after cloesing. 
 
 ## Meta
 
