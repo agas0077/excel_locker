@@ -33,8 +33,8 @@ def set_lang_eng():
 lang_ru_btn = Button(window, text="Русский", command=set_lang_ru)
 lang_eng_btn = Button(window, text="English", command=set_lang_eng)
 
-lang_ru_btn.pack(side=TOP, anchor=NW, padx=5, pady=5)
-lang_eng_btn.pack(side=TOP, anchor=NW, padx=5, pady=5)
+lang_ru_btn.grid(column = 0, row = 0, padx = 5, pady = 5)
+lang_eng_btn.grid(column = 0, row = 1, padx = 5, pady = 5)
 
 # Конфигурируем окно
 window.title(TITLE)
@@ -108,18 +108,18 @@ def runLocking(mypassword=None, button=None):
 
 # Инициализация кнопки выбора файлов
 chooseFileBtn = Button(window, text=CHOOSE_FILES_BTN, command=dialog.callDialog, width=25, height=1)
-chooseFileBtn.pack(side=TOP, padx=5, pady=5)
+chooseFileBtn.grid(column = 1, row = 0, padx = 100, pady = 5)
 
 # Инициализация поля ввода пароля
 passField.configure(width=30, justify=CENTER)
-passField.pack(side=TOP, padx=5, pady=5)
+passField.grid(column = 1, row = 1, padx = 100, pady = 5)
 
 # Инициализация кнопки запуска
 showFileBtn = Button(window, text=START_PROCESSING_BTN, command=runLocking, width=25, height=1)
-showFileBtn.pack(padx=5, pady=5)
+showFileBtn.grid(column = 1 , row = 2, padx = 100, pady = 5)
 
 # Инициализация кнопки запуска со стандартным паролем
 presetBtn = Button(window, text="iWantToModify", command=lambda: runLocking('iWantToModify', 'preset'), width=25, height=1)
-presetBtn.pack(padx=5, pady=5)
+presetBtn.grid(column = 1, row = 3, padx = 100, pady = 5)
 
 window.mainloop()
