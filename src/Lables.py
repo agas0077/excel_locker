@@ -1,5 +1,5 @@
 from tkinter import Label as L
-from tkinter import N, S, E, W
+
 
 class Lables(L):
     def __init__(self):
@@ -15,7 +15,7 @@ class Lables(L):
     def createLables(self, background=None):
         self.lables = [L(text=message, wraplength=500, background=background) for message in self.done]
         for lable in self.lables:
-            lable.grid(column = 0, columnspan = 3)
+            lable.pack()
 
     def destroyLables(self):
         if len(self.lables) != 0:
