@@ -43,8 +43,6 @@ Here are my thoughts of what would be nice to add or fix:
 ## Release History
 
 
-* 2.1.0
-    * Added option to choose between Russian and English languages
 * 2.0.0
     * Now it creates a copy of an initial file, locks it, saves it with a new name, then removes the initial file and renames the new file to the initial name. 
     * Add a button for lazy people like me and for unimportant stuff. It starts the program with preset password - iWantToModify
