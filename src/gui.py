@@ -48,7 +48,7 @@ def runLocking(mypassword=None, button=None):
         
         name = names[index]
 
-        lb.addMessageToList(f"{Path(path)}", 6)
+        lb.addMessageToList(f"Обработка {name}", 6)
         lb.destroyLables()
         lb.createLables(background='#2e8b57')
 
@@ -59,7 +59,7 @@ def runLocking(mypassword=None, button=None):
             message = f"Ошибка: {res['err']}"
             errors += 1
         else:
-            message = f"Пароль установлен для {dialog.fileNames[i]}"
+            message = f"Пароль установлен для {name}"
         # Добавляем сообщение об успешном выполнении
         lb.addMessageToList(f"{message}", 6)
         lb.destroyLables()
@@ -70,10 +70,9 @@ def runLocking(mypassword=None, button=None):
 
         i += 1
 
-    # Удаляем сообщения об успешном выполнении и выводим сообщение об успешном завершении процесса
-    lb.destroyLables()
-    lb.addMessageToList(f"ВСЕ ФАЙЛЫ БЫЛИ ОБРАБОТАНЫ! Ошибок: {errors}", 6)
-    lb.createLables(background='#2e8b57')
+    # Выводим сообщение об успешном завершении процесса
+    return messagebox.showinfo("Завершение работы", f"Все файлы были обработаны! Ошибок: {errors}")        
+
         
 
 # Инициализация кнопки выбора файлов
