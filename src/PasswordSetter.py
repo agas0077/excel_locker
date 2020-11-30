@@ -47,9 +47,15 @@ class PasswordSetter:
             "err": self._errMessage(err.decode(encoding='cp866'))
         }
 
-        # Remove the old file and rename the new one
-        self._rename(excel_file_path_to_save, excel_file_path)
-        
+        # Remove the old file and rename the new one (if case to prevent deleting initial file if can't save the new one)
+        if not res['err']:
+            self._rename(excel_file_path_to_save, excel_file_path)
+        else:
+            try:
+                os.unlink(excel_file_path_to_save)
+            except FileNotFoundError:
+                pass
+
         # remove
         vbs_script_path.unlink()
 

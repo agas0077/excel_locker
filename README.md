@@ -42,7 +42,9 @@ Here are my thoughts of what would be nice to add or fix:
 
 ## Release History
 
-
+* 2.0.1
+    * Preventing deleting initial file if failed to save the new one.
+    * Fix bug with letting run script with main button without specifying the password.
 * 2.0.0
     * Now it creates a copy of an initial file, locks it, saves it with a new name, then removes the initial file and renames the new file to the initial name. 
     * Add a button for lazy people like me and for unimportant stuff. It starts the program with preset password - iWantToModify

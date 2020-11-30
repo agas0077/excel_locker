@@ -36,7 +36,7 @@ def runLocking(mypassword=None, button=None):
     if len(tup) == 0:
         return messagebox.showerror("Ошибка", "Необходимо выбрать файлы")
     # Проверяем введен ли пароль
-    if button: 
+    if not button: 
         if len(password) == 0 or password == passField.placeholder:
             return messagebox.showerror("Ошибка", "Необходимо ввести пароль")
         if len(password) > 15:
